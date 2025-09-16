@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comprendre box</title>
+    <style>
+        .box {
+            border: 1px solid gray;
+            margin: 20px;
+            padding: 10px;
+            width: 250px;
+            height: 150px;
+            float: left
+        }
+
+        .cercle-box {
+
+            border: 2px solid gray;
+            margin: 10px;
+            width: 250px;
+            height: 200px;
+            border-radius: 50%;
+            float: left;
+
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .cercle-box ol {
+            list-style-type: lower-alpha;
+            list-style-position: outside;
+            padding-left: 30;
+            margin: 10;
+
+        }
+
+        .cercle-box li {
+            align-items: center;
+            justify-content: flex-start;
+            gap: 5px;
+
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <h1>Comprendre box</h1>
+    <div class="box">
+        <h3>disc</h3>
+        <ul style="list-style-type: disc;">
+            <li>Un</li>
+            <li>Deux</li>
+            <il>Trois</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h3>circle</h3>
+        <ul style="list-style-type: circle;">
+            <li>Un</li>
+            <li>Deux</li>
+            <li>Trois</li>
+        </ul>
+    </div>
+
+    <div class="cercle-box">
+        <h3>cercle-box</h3>
+        <ol style="list-style-type: lower-alpha; list-style-position: inside;">
+            <li>Un</li>
+            <li>Deux</li>
+            <li>Trois</li>
+        </ol>
+    </div>
+
+
+    <div class="box">
+        <h3>square</h3>
+        <ul style="list-style-type: square;">
+            <li>Un</li>
+            <li>Deux</li>
+            <li>Trois</li>
+        </ul>
+    </div>
+    <div class="box">
+        <h3>decimal</h3>
+        <ol style="list-style-type: decimal;">
+            <li>Un</li>
+            <li>Deux</li>
+            <li>Trois</li>
+        </ol>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Overflow Example</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 2px solid black;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .hidden {
+            overflow: hidden;
+            /* դուրս եկած մասը կտրվում է */
+            background: lightcoral;
+        }
+
+        .scroll {
+            overflow: scroll;
+            /* ավելացնում է scroll (գծիկ) */
+            background: lightgreen;
+        }
+
+        .visible {
+            overflow: visible;
+            /* դուրս եկածը մնում է տեսանելի */
+            background: lightblue;
+        }
+
+        .auto {
+            overflow: auto;
+            /* եթե դուրս գա՝ scroll կավելացնի */
+            background: khaki;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box hidden">
+        Սա շատ երկար տեքստ է, որ դուրս կգա տուփից ու կտրվի։
+    </div>
+
+    <div class="box scroll">
+        Սա շատ երկար տեքստ է, որ դուրս կգա տուփից, բայց scroll-ով կտեսնես։
+    </div>
+
+    <div class="box visible">
+        Սա շատ երկար տեքստ է, որ դուրս կգա տուփից ու կերևա դրսում։
+    </div>
+
+    <div class="box auto">
+        Սա շատ երկար տեքստ է, որ դուրս կգա տուփից, եթե պետք լինի scroll կավելանա։
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr"> <!-- Կարաս փոխես՝ hy, en, etc. -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Իմ կայքը — Իրական օրինակ</title>
+    <meta name="description" content="Լրիվ HTML5 կառուցվածքի օրինակ՝ semantic թեգերով, style-ով և փոքր JS-ով։" />
+
+    <!-- Favicon (դիր քո պատկերիկը) -->
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- Open Graph / Social preview -->
+    <meta property="og:title" content="Իմ կայքը — Իրական օրինակ" />
+    <meta property="og:description" content="Լրիվ HTML5 կառուցվածքի օրինակ։" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="https://picsum.photos/1200/630" />
+
+    <!-- Basic styles (մի ֆայլում, պարզ) -->
+    <style>
+        /* Reset-ի փոքրիկ տարբերակ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f9fafb;
+        }
+
+        /* Layout բլոկներ */
+        header {
+            background: #111827;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: .3px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 16px;
+        }
+
+        .menu a {
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: #374151;
+            color: #fff;
+            border: 0;
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding-block: 24px;
+        }
+
+        @media (min-width: 900px) {
+            main {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        section,
+        article,
+        aside {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 8px;
+            line-height: 1.3;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        .hero {
+            display: grid;
+            gap: 12px;
+        }
+
+        .hero figure {
+            margin: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .hero img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Ցանկեր, աղյուսակներ */
+        ul {
+            padding-left: 20px;
+        }
+
+        ol {
+            padding-left: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        th,
+        td {
+            border: 1px solid #e5e7eb;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f3f4f6;
+        }
+
+        /* Form */
+        .form-row {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            font: inherit;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        button[type="submit"] {
+            background: #111827;
+            color: #fff;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 24px 0;
+            margin-top: 24px;
+        }
+
+        footer a {
+            color: #e5e7eb;
+        }
+
+        /* Mobile menu */
+        @media (max-width: 700px) {
+            .menu {
+                display: none;
+            }
+
+            .menu.open {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 10px;
+            }
+
+            .menu-toggle {
+                display: inline-block;
+            }
+        }
+
+        /* Utility classes */
+        .muted {
+            color: #6b7280;
+            font-size: .95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: .85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER / NAV -->
+    <header>
+        <div class="container">
+            <nav aria-label="Գլխավոր մենյու">
+                <div class="brand">Իմ Կայքը</div>
+                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Մենյու</button>
+                <div id="primary-menu" class="menu" role="menubar">
+                    <a role="menuitem" href="#home">Գլխավոր</a>
+                    <a role="menuitem" href="#about">Մեր մասին</a>
+                    <a role="menuitem" href="#services">Ծառայություններ</a>
+                    <a role="menuitem" href="#contact">Կապ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <div class="container">
+        <main id="home">
+            <!-- LEFT COLUMN -->
+            <div class="left">
+                <!-- HERO SECTION -->
+                <section aria-labelledby="hero-title" class="hero">
+                    <h1 id="hero-title">Բարի գալուստ 🌿</h1>
+                    <p class="muted">Սա ամբողջական HTML5 օրինակ է՝ պատրաստ copy/paste-ի։ Կարաս ջնջես ավելորդները ու
+                        պահես քեզ պետք եկողը։</p>
+
+                    <figure>
+                        <img src="https://picsum.photos/1200/500" alt="Բնության պատահական գեղեցիկ տեսարան" />
+                        <figcaption class="muted">Նկար — օրինակելի figure/figcaption օգտագործում</figcaption>
+                    </figure>
+
+                    <p>
+                        <a class="badge" href="#about">Սկսենք</a>
+                    </p>
+                </section>
+
+                <!-- ARTICLE -->
+                <article id="about" aria-labelledby="about-title">
+                    <h2 id="about-title">Մեր մասին</h2>
+                    <p>Սա <strong>article</strong> թեգի օրինակ է։ Կարող ես այստեղ գրել երկար տեքստ՝ պատմելով քո մասին
+                        կամ նախագծի նպատակը։</p>
+
+                    <h3>Ինչ ենք անում</h3>
+                    <ul>
+                        <li>Պարզ և մաքուր կառուցվածք</li>
+                        <li>Թույլատրելի semantic թեգեր</li>
+                        <li>Հեշտ stylesheet և փոքրիկ JavaScript</li>
+                    </ul>
+
+                    <h3>Քայլերի պլան (ordered list)</h3>
+                    <ol>
+                        <li>Ստեղծել հիմքային HTML</li>
+                        <li>Ավելացնել CSS</li>
+                        <li>Կցել փոքրիկ JS (ընտրովի)</li>
+                    </ol>
+                </article>
+
+                <!-- SERVICES SECTION + TABLE -->
+                <section id="services" aria-labelledby="services-title">
+                    <h2 id="services-title">Ծառայություններ</h2>
+                    <p>Աղյուսակի օրինակ՝</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Սերվիս</th>
+                                <th>Նկարագրություն</th>
+                                <th>Գին</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Վեբ կայք</td>
+                                <td>Մեկ էջանոց Landing</td>
+                                <td>€499</td>
+                            </tr>
+                            <tr>
+                                <td>Բրենդինգ</td>
+                                <td>Logo + գունապնակ</td>
+                                <td>€299</td>
+                            </tr>
+                            <tr>
+                                <td>Աջակցություն</td>
+                                <td>Ամսական սպասարկում</td>
+                                <td>€49/ամիս</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- FORM -->
+                <section id="contact" aria-labelledby="contact-title">
+                    <h2 id="contact-title">Կապ</h2>
+                    <form action="#" method="post" aria-describedby="contact-help">
+                        <p id="contact-help" class="muted">Լրացրու դաշտերը և ուղարկիր մեզ հաղորդագրություն։</p>
+
+                        <div class="form-row">
+                            <label for="name">Անուն</label>
+                            <input type="text" id="name" name="name" placeholder="Քո անունը" required />
+                        </div>
+
+                        <div class="form-row">
+                            <label for="email">Էլ․ հասցե</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                        </div>
+
+                        <div class="form-row">
+                            <label for="topic">Թեմա</label>
+                            <select id="topic" name="topic">
+                                <option value="general">Ընդհանուր հարց</option>
+                                <option value="quote">Գին/առաջարկ</option>
+                                <option value="support">Աջակցություն</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="message">Հաղորդագրություն</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Գրի՛ր քո հաղորդագրությունը…"></textarea>
+                        </div>
+
+                        <button type="submit">Ուղարկել</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <aside aria-label="Կողային տեղեկատվություն">
+                <h2>Նշումներ</h2>
+                <p class="muted">Սա <em>aside</em> է՝ կողմի ինֆորմացիայի համար (նշումներ, հղումներ և այլն)։</p>
+
+                <h3>Օգտակար հղումներ</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener">MDN Docs</a></li>
+                    <li><a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener">HTML Living Standard</a>
+                    </li>
+                </ul>
+
+                <h3>Փոքր code block</h3>
+                <pre><code>&lt;div class="box"&gt;Hello&lt;/div&gt;</code></pre>
+            </aside>
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="container">
+            <p>© <span id="year"></span> Իմ Կայքը. Բոլոր իրավունքները պաշտպանված են.</p>
+            <p><a href="#home">Վերադառնալ սկիզբ</a></p>
+        </div>
+    </footer>
+
+    <!-- JS (փոքրիկ օրինակ՝ mobile menu և տարին footer-ում) -->
+    <script>
+        // Footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const btn = document.querySelector('.menu-toggle');
+        const menu = document.getElementById('primary-menu');
+        btn.addEventListener('click', () => {
+            const isOpen = menu.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(isOpen));
+        });
+    </script>
+</body>
+
+</html>

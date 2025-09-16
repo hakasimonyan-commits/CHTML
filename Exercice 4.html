@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width
+initial-scale=1">
+    <title>Exercice 4</title>
+
+
+    <style>
+        /* On centre tout le contenu avec Flexbox */
+        body {
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            height: 100vh;
+        }
+
+
+
+        /* Style du formulaire */
+        form {
+            border: 2px solid #ccc;
+            /* bordure */
+            border-radius: 10px;
+            /* coins arrondis */
+            padding: 20px;
+            background: white;
+            width: 300px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style des champs */
+        input {
+            display: block;
+            width: 93%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        /* Style du bouton */
+        button {
+
+            width: 100%;
+            padding: 10px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+
+        }
+
+        .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .links a {
+            font-size: 14px;
+            color: rgb(48, 27, 132);
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Le formulaire demandé -->
+    <form>
+        <!-- Email դաշտը -->
+        <input type="text" inputmode="email" placeholder="Email" autocomplete="off">
+
+        <!-- Գաղտնաբառ դաշտը -->
+        <input type="password" placeholder="Mot de passe" autocomplete="new-password">
+
+        <!-- Կոճակ -->
+        <button type="submit">Se connecter</button>
+
+
+        <!-- Code injected by live-server -->
+
+        <!-- Հավելյալ հղումներ -->
+        <div class="links">
+            <a href="#">Mot de passe oublié ?</a><br>
+            <a href="#">Créer un compte</a>
+        </div>
+    </form>
+
+</body>
+
+</html>

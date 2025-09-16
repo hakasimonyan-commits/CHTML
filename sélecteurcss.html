@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de Selecteurs CSS</title>
+    <style>
+        /* 🔹 Child position */
+        li:first-child {
+            color: red;
+        }
+
+        /* Առաջին */
+        li:last-child {
+            color: blue;
+        }
+
+        /* Վերջին */
+        li:nth-child(2) {
+            color: green;
+        }
+
+        /* Երկրորդ */
+        li:nth-child(odd) {
+            background: #eee;
+        }
+
+        /* Կենտերը մոխրագույն */
+        li:nth-child(even) {
+            background: #ddd;
+        }
+
+        /* Զույգերը մուգ մոխրագույն */
+
+        /* 🔹 Pseudo-elements */
+        p.note::before {
+            content: "👉 ";
+            color: orange;
+        }
+
+        p.note::after {
+            content: " ✅";
+            color: green;
+        }
+
+        /* 🔹 Attribute selectors */
+        [title] {
+            border: 1px dashed purple;
+        }
+
+        /* Բոլոր էլեմենտները, որ ունեն title */
+        [title="special"] {
+            background: yellow;
+        }
+
+        /* Միայն նրանք, որոնց title="special" է */
+
+        /* 🔹 :not() (բացառություն) */
+        .box:not(.skip) {
+            background: lightblue;
+        }
+
+        /* Բոլոր .box-երը, բացի .skip-երից */
+
+        /* 🔹 :empty (դատարկ) */
+        .empty:empty {
+            border: 2px solid red;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🔹 nth-child, first-child, last-child</h2>
+    <ul>
+        <li>Առաջին (կարմիր)</li>
+        <li>Երկրորդ (կանաչ)</li>
+        <li>Երրորդ (odd → մոխրագույն)</li>
+        <li>Չորրորդ (even → մուգ մոխրագույն)</li>
+        <li>Վերջին (կապույտ)</li>
+    </ul>
+
+    <h2>🔹 ::before / ::after</h2>
+    <p class="note">Այս տեքստը կստանա 👉 … ✅ ավտոմատ</p>
+
+    <h2>🔹 Attribute Selectors</h2>
+    <p title="anything">Ես ունեմ title → ստանում եմ dashed border</p>
+    <p title="special">Ես ունեմ title="special" → դառնում եմ դեղին</p>
+
+    <h2>🔹 :not()</h2>
+    <div class="box">Ես .box եմ, ու ստանում եմ lightblue</div>
+    <div class="box skip">Ես .box.skip եմ, բայց ինձ չեն դիպչում</div>
+
+    <h2>🔹 :empty</h2>
+    <div class="empty"></div> <!-- Դատարկ, կստանա կարմիր սահման -->
+    <div class="empty">Ես դատարկ չեմ, ինձ ոչինչ չի դիպչի</div>
+
+</body>
+
+</html>

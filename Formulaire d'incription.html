@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'incription</title>
+</head>
+
+<body>
+    <h1>Formulaire d'inscription à une formation informatique</h1>
+
+    <form action="merci.html" metode="post">
+
+
+        <!-- Nom -->
+        <label for="nom"> Nom : </label>
+        <input type="text" id="nom" name="nom" required>
+        <br><br>
+
+        <!-- Prenom -->
+        <label for="prénom">Prénom : <label>
+                <input type="text" id="prénom" name="prénom" required>
+                <br><br>
+
+                <!-- Email -->
+                <label for="email">Email :</label>
+                <input type="text" id="email" name="email" required>
+                <br><br>
+
+                <!-- Telephone -->
+                <label for="tel"> Téléphone : </label>
+                <input type="tel" id="tel">
+                <br><br>
+
+                <!-- Adresse -->
+                <label for="adresse"> Adresse :</label>
+                <input type="text" id="adresse" name="adresse">
+                <br><br>
+
+                <!-- Date de naissance -->
+                <label for="naissance">Date de naissance :</label>
+                <input type="date" id="naissance" name="naissance" required>
+                <br><br>
+
+
+                <!-- Diplômes -->
+                <label for="diplome">Diplômes :</label>
+                <select id="diplome" name="diplome">
+                    <option value="brevet">Brevet</option>
+                    <option value="bac">Bac</option>
+                    <option value="bts">BTS</option>
+                    <option value="license">License</option>
+                    <option value="master">Master</option>
+                    <option value="doctorat">Doctorat</option>
+                </select>
+                <br><br>
+
+
+                <!-- Langues parlées -->
+                <label for="langues">Langues parlées :</label><br>
+                <select id="langues" name="langues[]" multiple size="5">
+                    <option value="fr">Français</option>
+                    <option value="en">Anglais</option>
+                    <option value="es">Espagnol</option>
+                    <option value="de">Allemand</option>
+                    <option value="ru">Russe</option>
+                </select>
+                <br><br>
+
+
+
+                <!-- Type de formation choisie -->
+                <label for="formation">Type de formation :</label>
+                <input type="text" id="formation" name="formation">
+                <br><br>
+
+                <!-- Status actuel -->
+                <p>Status actuel :</p>
+                <input type="radio" id="salarie" name="statut" value="salarie" required>
+                <label for="salarie">Salarie</label><br>
+
+                <input type="radio" id="chomage" name="statut" value="chomage">
+                <label for="chomage">Au chômage</label><br>
+
+                <input type="radio" id="retraite" name="statut" value="retraite">
+                <label for="retraite">Retraité(é)</label>
+                <br><br>
+
+
+                <!-- Ajouter son CV -->
+                <label for="cv">Joindre votre CV :</label>
+                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+                <br><br>
+
+
+
+
+                <!-- Lettre de motivation -->
+                <label for="motivation">Lettre de moivation :</label>
+                <br>
+                <textarea id="motivation" name="motivation" rows="5" cols="60" placeholder="Ecrivez ici..."
+                    required></textarea>
+                <br><br>
+
+                <!-- Boutton -->
+                <input type="submit" value="Envoyer">
+    </form>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>

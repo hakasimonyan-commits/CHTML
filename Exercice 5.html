@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercice 5</title>
+    <style>
+        /* Կենտրոնացում */
+        body {
+            margin: 8px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Փաթեթ՝ որին կտանք “դուրս եկող” մոխրագույնը */
+        .panel {
+            position: relative;
+            /* պարտադիր, որ ::before-ը ճիշտ տեղավորվի */
+            display: inline-block;
+        }
+
+        .panel::before {
+            content: "";
+            position: absolute;
+            inset: -14px -22px;
+            /* 👉 մի քիչ մեծ է, որ կողքերից դուրս գա */
+            background: #f3f4f6;
+            /* բաց մոխրագույն */
+            z-index: 0;
+            /* գնում է քարտից ցածր */
+        }
+
+        /* Քարտը */
+        .card {
+            position: relative;
+            z-index: 1;
+            /* նստում է մոխրագույնի վրա */
+            width: 310px;
+            background: #fff;
+            border: 2px solid #ef4444;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
+            display: flex;
+            flex-direction: column;
+            min-height: 520px;
+            /* մի քիչ “երկար” տեսք */
+        }
+
+        .card-header {
+            background: #ef4444;
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+            font-weight: 700;
+            line-height: 1.50;
+        }
+
+        .card-body {
+            background: #f3f4f6;
+            padding: 10px 10px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 10;
+            margin-bottom: 0px;
+
+        }
+
+        .item {
+            background: #fff;
+            border: 2px solid #f9f6f6;
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .item .title {
+            margin: 0;
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .item .date {
+            margin: 0px 0 0;
+            color: #6b7280;
+            font-size: 15px;
+            font-style: italic;
+            letter-spacing: .5px;
+            line-height: 1.2;
+        }
+
+        /* Փոքր “ոչ կատարյալ ուղիղ” էֆեկտ՝ շատ նուրբ */
+        .item:nth-child(2) .date {
+            transform: translateX(.5px);
+        }
+
+        .item:nth-child(3) .date {
+            transform: translateX(.5px);
+        }
+
+        .item:nth-child(4) .date {
+            transform: translateX(.5px);
+        }
+
+        .card-footer {
+            background: #ef4444;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 15px;
+            margin: 0px;
+        }
+
+        .card-footer button {
+
+            align-items: center;
+            background: #fff;
+            color: #ef4444;
+            border: none;
+            border-radius: 9999px;
+            padding: 13px 40px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            white-space: nowrap;
+            margin-bottom: 10px;
+            margin: 3px;
+        }
+
+        .card-footer .note {
+            margin: 3px;
+            padding: 0;
+            font-size: 15px;
+            opacity: .2.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="panel">
+        <div class="card">
+            <div class="card-header">
+                Ils recherchent un freelance<br>sur Graphiste.com
+            </div>
+
+            <div class="card-body">
+                <div class="item">
+                    <p class="title">Projet de tatouage</p>
+                    <p class="date">30 Jan., à 22h32</p>
+                </div>
+                <div class="item">
+                    <p class="title">Création Logo bâtiment</p>
+                    <p class="date">30 Jan., à 22h13</p>
+                </div>
+                <div class="item">
+                    <p class="title">Créer un logo voir plus…</p>
+                    <p class="date">30 Jan., à 20h35</p>
+                </div>
+                <div class="item">
+                    <p class="title">Création logo sté conseil...</p>
+                    <p class="date">30 Jan., à 17h24</p>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button>PUBLIER UNE ANNONCE</button>
+                <p class="note">Rapide, gratuit, sans commission</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

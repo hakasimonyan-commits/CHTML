@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 7</title>
+    <style>
+        /* Էջը կենտրոնում դնելու համար */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Գլխավոր կոնտեյներ */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Վերևի տողը (3 բոքս) */
+        .row-top {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row-top .rectangle {
+            width: 150px;
+            height: 100px;
+            border: 2px solid #333;
+            background: #fafafa;
+        }
+
+        .row-top .square {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            background: #fafafa;
+        }
+
+        /* Ներքևի տողը */
+        .row-bottom {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Ձախ կողմ */
+        .bottom-left {
+            display: flex;
+            gap: 20px;
+            border: 2px solid #333;
+            padding: 10px;
+        }
+
+        .bottom-left .big {
+            flex: 2;
+            /* սա մեծանումա */
+            height: 200px;
+            border: 2px solid #333;
+            background: #fafafa;
+        }
+
+        .bottom-left .narrow {
+            flex: 1;
+            /* սա փոքր մնա */
+            height: 200px;
+            border: 2px solid #333;
+            background: #fafafa;
+        }
+
+        /* Աջ կողմ */
+        .bottom-right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 2px solid #333;
+            padding: 10px;
+        }
+
+        .bottom-right .bar {
+            width: 180px;
+            height: 50px;
+            border: 2px solid #333;
+            background: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Վերևի տող -->
+        <div class="row-top">
+            <div class="rectangle"></div>
+            <div class="square"></div>
+            <div class="rectangle"></div>
+        </div>
+
+        <!-- Ներքևի տող -->
+        <div class="row-bottom">
+            <!-- Ձախ բլոկ -->
+            <div class="bottom-left">
+                <div class="big"></div>
+                <div class="narrow"></div>
+            </div>
+
+            <!-- Աջ բլոկ -->
+            <div class="bottom-right">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple display</title>
+    <style>
+        .box {
+            background: lightblue;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .inline-block {
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            background: lightgreen;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>display: block</h2>
+    <div class="box block">Élément block 1</div>
+    <div class="box block">Élément block 2</div>
+
+    <h2>display: inline</h2>
+    <div class="box inline">Élément inline 1</div>
+    <div class="box inline">Élément inline 2</div>
+
+    <h2>display: inline-block</h2>
+    <div class="box inline-block">Élément inline-block 1</div>
+    <div class="box inline-block">Élément inline-block 2</div>
+
+    <h2>display: none</h2>
+    <div class="box none">Cet élément n’apparaît pas du tout</div>
+    <div class="box">Celui-ci apparaît</div>
+
+    <h2>visibility: hidden</h2>
+    <div class="box hidden">Cet élément est caché mais garde sa place</div>
+    <div class="box">Celui-ci apparaît</div>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Exercice 7</title>
+    <style>
+        /* կենտրոնացնենք ամբողջ աշխատանքը էկրանի մեջտեղում */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fafafa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Գլխավոր կոնտեյներ՝ 2 շարք (վերև/ներքև) */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        /* ՎԵՐԵՎԻ ՇԱՐՔ — parent #1 */
+        .row-top {
+            border: 2px solid #333;
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            width: 900px;
+            /* պարզապես չափ, որ նկարի նման լինի */
+        }
+
+        .rectangle {
+            width: 380px;
+            height: 120px;
+            border: 2px solid black;
+
+        }
+
+        .square {
+            height: 100px;
+            width: 280px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .row-top .box {
+            width: 280px;
+            height: 110px;
+            border: 2px solid #333;
+            background: #fff;
+
+        }
+
+
+        /* ՆԵՐՔԵՎԻ ՇԱՐՔ — 2 ծնող կողք-կողքի (parent #2 և parent #3) */
+        .row-bottom {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* ՁԱԽ ՏԱՐԱ — parent #2 (մեջը 2 բլոկ կողք-կողքի) */
+        .bottom-left {
+            border: 2px solid #333;
+            padding: 20px;
+            display: flex;
+            gap: 30px;
+            height: 260px;
+            width: 530px;
+        }
+
+        .tall {
+            border: 2px solid #333;
+            background: #fff;
+            height: 100%;
+        }
+
+        .tall.wide {
+            width: 360px;
+        }
+
+        /* լայնը */
+        .tall.narrow {
+            width: 120px;
+        }
+
+        /* նեղը  */
+
+        /* ԱՋ ՏԱՐԱ — parent #3 (մեջը 3 հորիզոնական «բար») */
+        .bottom-right {
+            border: 2px solid #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            width: 318px;
+            height: 260px;
+        }
+
+        .bar {
+            border: 2px solid #333;
+            background: #fff;
+            height: 200px;
+            padding: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- ՎԵՐԵՎԻ ծնող (3 rectangle) -->
+        <section class="row-top">
+            <div class="rectangle"></div>
+            <div class="square"></div>
+            <div class="rectangle"></div>
+        </section>
+
+        <!-- ՆԵՐՔԵՎԻ ծնող՝ իր մեջ երկու ծնող -->
+        <section class="row-bottom">
+            <!-- Ձախ ծնող (2 rectangle կողք-կողքի) -->
+            <div class="bottom-left">
+                <div class="tall wide"></div>
+                <div class="tall narrow"></div>
+            </div>
+
+            <!-- Աջ ծնող (3 rectangle մեկը մյուսի տակ) -->
+            <div class="bottom-right">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
