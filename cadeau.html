@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadeau de Hayka 🎁</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(#0b0c1b, #1a1a3d);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: fall linear;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .box {
+            width: 220px;
+            height: 220px;
+            background: #7a652e;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gold;
+            font-size: 1.4em;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background 0.3s;
+            z-index: 10;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            background: #ff7f7f;
+        }
+
+        .message {
+            display: none;
+            background: rgb(148, 127, 73);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            z-index: 10;
+            color: gold;
+        }
+
+        h1 {
+            color: gold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #c1baa6;
+            line-height: 1.5;
+        }
+
+        .emoji {
+            font-size: 2em;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            top: 0;
+            opacity: 0.8;
+            animation: fall 3s linear forwards;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="giftBox">🎁 Cadeau de Hayka</div>
+
+    <div class="message" id="message">
+        <h1>Joyeux anniversaire, Louis ! 🎉</h1>
+        <p>Un petit cadeau juste pour toi 😊<br>Parce que tu es génial 😄 <span class="emoji">🥳🎂</span></p>
+    </div>
+
+    <!-- Iframe YouTube caché -->
+    <iframe id="music" width="0" height="0" src="https://www.youtube.com/embed/En407tTnse8?enablejsapi=1"
+        frameborder="0" allow="autoplay; encrypted-media"></iframe>
+
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        // étoiles tombantes
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.animationDuration = (2 + Math.random() * 3) + 's';
+            star.style.width = star.style.height = (1 + Math.random() * 3) + 'px';
+            document.body.appendChild(star);
+        }
+
+        // confettis
+        // Crée des confettis colorés et des emojis
+        function createConfetti(number) {
+            const emojis = ['🎉', '', '🥳', '', '✨'];
+            const colors = ['#FFD700', '#FF69B4', '#00FFFF', '#FF4500', '#ADFF2F', '#FF8C00', '#00FF7F'];
+
+            for (let i = 0; i < number; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+
+                // choisir aléatoirement couleur ou emoji
+                if (Math.random() < 0.5) {
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                } else {
+                    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.fontSize = (10 + Math.random() * 20) + 'px';
+                }
+
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                document.body.appendChild(confetti);
+
+                // animation de chute
+                confetti.animate([{
+                    transform: 'translateY(0)'
+                },
+                {
+                    transform: 'translateY(500px)'
+                }
+                ], {
+                    duration: 3000 + Math.random() * 2000,
+                    easing: 'linear'
+                });
+
+                // supprimer après animation
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+
+        // message + musique YouTube
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('music');
+        }
+
+        const box = document.getElementById('giftBox');
+        const message = document.getElementById('message');
+
+        box.addEventListener('click', () => {
+            box.style.display = 'none';
+            message.style.display = 'block';
+            createConfetti(150);
+            if (player) player.playVideo();
+        });
+    </script>
+
+</body>
+
+</html>
